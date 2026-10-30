@@ -1,0 +1,14 @@
+# Dependencias (nunca se suben, se descargan con composer/npm)
+/vendor/
+/node_modules/
+
+# Credenciales y archivos de entorno reales
+.env
+
+# Archivos compilados de Vite y caché
+/public/build/
+.vite/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

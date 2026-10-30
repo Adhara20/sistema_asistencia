@@ -1,0 +1,13 @@
+{
+  "name": "tu-usuario/sistema_asistencia",
+  "description": "Sistema de asistencia escolar con PHP puro, MVC y PDO",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "require": {
+    "vlucas/phpdotenv": "^5.8"
+  }
+}
