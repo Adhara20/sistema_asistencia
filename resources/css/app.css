@@ -1,1 +1,162 @@
 @import "tailwindcss";
+
+/* Personalizaciones de colores para el Sistema de Asistencia */
+@theme {
+  /* Fondo general del sistema */
+  --color-background: #fcfcfc; /* Tono Blanco / Gris muy claro */
+
+  /* Colores principales */
+  --color-primary: #2563eb; /* Azul Eléctrico */
+  --color-secondary: #60a5fa; /* Azul Celeste */
+
+  /* Estados y feedback */
+  --color-success: #059669; /* Verde Éxito */
+  --color-success-bg: #ecfdf5; /* Fondo para indicadores positivos */
+
+  /* Contenedores y tarjetas */
+  --color-card-bg: #f1f5f9; /* Fondo para cuadro de contenido principal */
+
+  /* Colores */
+  --color-gris: #3e474f;
+  --color-negro: #060f24;
+}
+
+/* Personalización de Fuentes y Tipografía del Sistema */
+@theme {
+  /* Tipo de fuente global */
+  --font-all: "Inter", sans-serif;
+
+  /* Tamaños para el encabezado (Header) */
+  --text-header-title: 1.25rem; /* 20px - Nombre principal del sistema */
+  --text-header-subtitle: 0.875rem; /* 14px - Texto indicador de la pantalla actual */
+
+  /* Títulos y Secciones */
+  --text-title: 1.125rem; /* 18px - Títulos de listas, formularios, módulos, etc. */
+
+  /* Descripciones / Subtítulos */
+  --text-description: 0.875rem; /* 14px - Texto de apoyo debajo de formularios o listas */
+
+  /* Formularios e Inputs */
+  --text-label: 0.875rem; /* 14px - Etiquetas (Labels) de los campos */
+  --text-input: 1rem; /* 16px - Texto que escribe el usuario dentro del input */
+
+  /* Botones y Menús */
+  --text-button: 0.875rem; /* 14px - Texto dentro de los botones de acción y menús */
+}
+
+.logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-primary);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-background);
+  font-weight: 700;
+}
+
+/* Cuerpo de las interfaces */
+body {
+  background-color: var(--color-background);
+  font-family: var(--font-all);
+  margin: 0;
+  padding: 0;
+}
+
+/* Estructura general de la aplicación (Grid para Sidebar + Contenido Principal) */
+.app-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  min-height: 100vh;
+  transition: grid-template-columns 0.3s ease-in-out;
+}
+
+/* Header superior */
+.app-header {
+  grid-area: header;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Contenedor principal */
+.app-main-container {
+  grid-area: main;
+  background-color: var(--color-card-bg);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-inline: 1rem;
+  margin-block: 0.5rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Para los que hagan formularios */
+.card-formulario {
+  background-color: var(--color-background);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Para los que hagan listas */
+.card-listas {
+  background-color: var(--color-background);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* INPUTS */
+/* 1. Estilo base universal para TODOS los inputs */
+input {
+  font-size: var(--text-input);
+  background-color: var(--color-background);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid var(--color-secondary);
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estado focus general para todos */
+input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2); /* Efecto anillo de enfoque */
+}
+
+/* Variantes exclusivas para el ancho del input */
+
+/* Chico */
+input.input-sm {
+  width: 150px;
+}
+/* Mediano */
+input.input-md {
+  width: 280px;
+}
+/* Grande */
+input.input-lg {
+  width: 100%;
+}
+
+/* Inputs diferentes: A los que les toquen, pueden ajustarlos */
+input.input-login {
+  border-radius: 1rem;
+}
+
+input.input-filter {
+  border-style: dashed; /* Estilo distinto para filtros de búsqueda */
+}
