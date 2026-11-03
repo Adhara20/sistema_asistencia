@@ -1,0 +1,133 @@
+/* Sidebar lateral */
+.app-sidebar {
+  grid-area: sidebar;
+  background-color: var(--color-background);
+  border-right: 1px solid #e2e8f0;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Si el sidebar está contraído */
+.app-layout.sidebar-collapsed {
+  grid-template-columns: 80px 1fr;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* 2. Menú de opciones mejorado */
+.options-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Espaciado limpio entre opciones */
+  padding-block: 1.5rem;
+}
+
+/* Enlaces del menú de opciones */
+.options-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-all);
+  font-size: var(--text-button);
+  font-weight: 500;
+  color: var(--color-gris);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estado Hover para los enlaces */
+.options-menu a:hover {
+  background-color: var(--color-card-bg);
+  color: var(--color-primary);
+}
+
+/* Estado Activo (Puedes agregar la clase .active al enlace actual con JS) */
+.options-menu a.active {
+  background-color: var(
+    --color-success-bg
+  ); /* O un tono celeste primario según prefieras */
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Botón hamburguesa por defecto */
+.sidebar-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gris);
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-toggle-btn:hover {
+  background-color: var(--color-card-bg);
+  color: var(--color-primary);
+}
+
+/* ==========================================================
+   ESTADOS CUANDO EL SIDEBAR ESTÁ CERRADO (.sidebar-collapsed)
+   ========================================================== */
+.app-layout.sidebar-collapsed .app-sidebar {
+  padding-inline: 0.5rem;
+  align-items: center;
+}
+
+/* Centramos el contenido de la cabecera cuando está cerrado */
+.app-layout.sidebar-collapsed .sidebar-top {
+  justify-content: center;
+}
+
+/* Ocultamos los textos (span) de las opciones y centramos los iconos */
+.app-layout.sidebar-collapsed .options-menu a {
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.app-layout.sidebar-collapsed .options-menu a span {
+  display: none;
+}
+
+/* Ocultamos el botón de hamburguesa normal de la derecha */
+.app-layout.sidebar-collapsed #sidebar-toggle {
+  display: none;
+}
+
+/* MAGIA HOVER: Cuando está cerrado, al pasar el cursor sobre la zona del logo (.sidebar-top), 
+   el logo se desvanece y el botón de hamburguesa aparece exactamente en su posición */
+.app-layout.sidebar-collapsed .sidebar-top:hover .logo {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.app-layout.sidebar-collapsed .sidebar-top:hover #sidebar-toggle {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-card-bg);
+  color: var(--color-primary);
+  border-radius: 1rem;
+  align-items: center;
+  justify-content: center;
+}
