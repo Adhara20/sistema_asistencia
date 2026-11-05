@@ -1,0 +1,250 @@
+/* CONTENEDOR Y CUADRÍCULA */
+.modulo-dashboard {
+  width: 100%;
+  min-width: 0;
+  color: var(--color-gris);
+}
+
+/* Cuadrícula de tarjetas: 2 columnas por defecto, .dashboard-grid-3 para 3 */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .dashboard-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid,
+  .dashboard-grid-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.modulo-dashboard button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* TARJETA DEL DASHBOARD */
+
+.dashboard-card {
+  min-width: 0;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: var(--color-background);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.dashboard-card-titulo {
+  margin: 0 0 0.25rem;
+  color: var(--color-primary);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dashboard-card-descripcion {
+  margin: 0 0 1rem;
+  color: var(--color-gris-suave);
+  font-size: var(--text-description);
+  line-height: 1.5;
+}
+
+/* Tarjeta que ocupa todo el ancho de la cuadrícula */
+.dashboard-card-ancha {
+  grid-column: 1 / -1;
+}
+
+/* Mensaje cuando una lista está vacía */
+.dashboard-vacio {
+  margin: 0;
+  color: var(--color-gris-suave);
+  font-size: var(--text-description);
+}
+
+/* MÉTRICAS (cuadritos con número) */
+
+.metricas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.metricas-1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.metricas-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metrica {
+  padding: 0.85rem;
+  border-radius: 0.75rem;
+  background-color: var(--color-card-bg);
+  text-align: center;
+}
+
+.metrica-etiqueta {
+  margin: 0;
+  color: var(--color-gris-suave);
+  font-size: var(--text-description);
+}
+
+.metrica-valor {
+  margin: 0.15rem 0 0;
+  color: var(--color-negro);
+  font-size: var(--text-header-title);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.metrica-porcentaje {
+  font-size: var(--text-description);
+  font-weight: 500;
+}
+
+/* Variantes de color */
+.metrica-exito {
+  background-color: var(--color-success-bg);
+}
+
+.metrica-exito .metrica-valor {
+  color: var(--color-success);
+}
+
+.metrica-alerta {
+  background-color: var(--color-inactive-bg);
+}
+
+.metrica-alerta .metrica-valor {
+  color: var(--color-inactive);
+}
+
+/* Métrica grande (total) */
+.metrica-grande {
+  padding: 1.1rem;
+}
+
+.metrica-grande .metrica-valor {
+  font-size: 1.75rem;
+}
+
+@media (max-width: 600px) {
+  .metricas,
+  .metricas-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* LISTA DE ITEMS DENTRO DE UNA TARJETA + BADGES + BOTÓN DE ACCIÓN */
+
+.dashboard-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dashboard-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--color-card-bg);
+}
+
+.dashboard-item:first-child {
+  border-top: 0;
+}
+
+.item-datos {
+  min-width: 0;
+}
+
+.item-nombre {
+  margin: 0;
+  color: var(--color-negro);
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+
+.item-detalle {
+  margin: 0.1rem 0 0;
+  color: var(--color-gris-suave);
+  font-size: var(--text-description);
+}
+
+.item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  color: var(--color-gris-suave);
+  font-size: var(--text-description);
+}
+
+/* Badges */
+.dashboard-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-exito {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.badge-alerta {
+  background-color: var(--color-inactive-bg);
+  color: var(--color-inactive);
+}
+
+/* Botón de acción (notificar, etc.) */
+.boton-notificar {
+  flex-shrink: 0;
+  padding: 0.5rem 0.85rem;
+  border: 0.1rem solid var(--color-primary);
+  border-radius: 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-family: inherit;
+  font-size: var(--text-button);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.boton-notificar:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+@media (max-width: 600px) {
+  .dashboard-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .boton-notificar {
+    width: 100%;
+  }
+}
