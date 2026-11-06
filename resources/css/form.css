@@ -1,0 +1,26 @@
+.btn-registrar {
+  background-color: #0d9655; 
+  color: #ffffff;
+  font-family: "Inter", sans-serif;;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 38px; 
+  border: none;
+  border-radius: 9999px; 
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0.08, 0, 0.1);
+}
+
+.btn-registrar:hover {
+  background-color: #0b7c46;
+}
+
+.card-formulario {
+  width: 100%;
+  max-width: 420px; 
+  margin: 0 auto;
+}
