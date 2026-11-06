@@ -124,9 +124,10 @@ body {
 
 /* INPUTS */
 /* 1. Estilo base universal para TODOS los inputs */
-input {
+input, select {
   font-size: var(--text-input);
   background-color: var(--color-background);
+  height: 2.625rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem; /* rounded-lg */
   border: 1px solid var(--color-secondary);
@@ -135,7 +136,7 @@ input {
 }
 
 /* Estado focus general para todos */
-input:focus {
+input:focus, select:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2); /* Efecto anillo de enfoque */
 }
@@ -143,15 +144,15 @@ input:focus {
 /* Variantes exclusivas para el ancho del input */
 
 /* Chico */
-input.input-sm {
+input.input-sm, select.input-sm {
   width: 150px;
 }
 /* Mediano */
-input.input-md {
+input.input-md, select.input-md {
   width: 280px;
 }
 /* Grande */
-input.input-lg {
+input.input-lg, select.input-lg {
   width: 100%;
 }
 
@@ -162,4 +163,12 @@ input.input-login {
 
 input.input-filter {
   border-style: dashed; /* Estilo distinto para filtros de búsqueda */
+}
+
+select:invalid {
+  color: var(--color-gris);
+}
+
+select option {
+  color: #111827;
 }
