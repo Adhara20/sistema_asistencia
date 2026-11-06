@@ -13,7 +13,9 @@
   --color-success: #059669; /* Verde Éxito */
   --color-success-bg: #ecfdf5; /* Fondo para indicadores positivos */
   --color-inactive: #6b0b0b;
-  --color-inactive: #d99898;
+  --color-inactive-bg: #ebc8c8;
+  --color-advertencia: #b57e28;
+  --color-advertencia-bg: #ffeca3;
 
   /* Contenedores y tarjetas */
   --color-card-bg: #f1f5f9; /* Fondo para cuadro de contenido principal */
