@@ -131,6 +131,14 @@
   color: var(--color-inactive);
 }
 
+.metrica-advertencia {
+  background-color: var(--color-advertencia-bg);
+}
+
+.metrica-advertencia .metrica-valor {
+  color: var(--color-advertencia);
+}
+
 /* Métrica grande (total) */
 .metrica-grande {
   padding: 1.1rem;
@@ -144,6 +152,10 @@
   .metricas,
   .metricas-2 {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .dashboard-lista {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -170,6 +182,7 @@
 
 .item-datos {
   min-width: 0;
+  max-width: 80%;
 }
 
 .item-nombre {
@@ -183,6 +196,29 @@
   margin: 0.1rem 0 0;
   color: var(--color-gris-suave);
   font-size: var(--text-description);
+}
+
+.item-tipo {
+  color: var(--color-negro);
+  font-size: var(--text-label);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+}
+
+.item-fecha {
+  margin: 0;
+  font-size: var(--text-label);
+}
+
+.item-fecha .text-fecha {
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.item-fecha .dato-fecha {
+  color: var(--color-negro);
+  font-weight: 400;
 }
 
 .item-meta {
@@ -213,6 +249,11 @@
 .badge-alerta {
   background-color: var(--color-inactive-bg);
   color: var(--color-inactive);
+}
+
+.badge-advertencia {
+  background-color: var(--color-advertencia-bg);
+  color: var(--color-advertencia);
 }
 
 /* Botón de acción (notificar, etc.) */
