@@ -31,7 +31,7 @@
           <p class="text-description text-gris text-center mb-6">Formulario de Registro de Usuarios</p>
           
           <div class="grid grid-cols-2 gap-4">
-            <div>
+            <div> 
               <label class="block text-label font-medium text-gris mb-1">Nombres</label>
               <input type="text" class="text-input input-lg" placeholder="Ingresa nombres...">
             </div>
