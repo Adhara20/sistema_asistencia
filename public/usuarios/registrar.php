@@ -91,5 +91,4 @@
     </div>
 
 </body>
-<script src="../../resources/js/sidebar.js"></script>
 </html>
