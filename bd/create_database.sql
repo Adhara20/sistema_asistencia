@@ -49,7 +49,7 @@ COMMENT = 'Como también se usará para los usuarios de Registradoras, se dejar�
 -- -----------------------------------------------------
 -- Table `sistema_asistencia`.`asistencia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `msistema_asistenciaydb`.`asistencia` (
+CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`asistencia` (
   `id_asistencia` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
   `fk_usuario` INT NOT NULL,
