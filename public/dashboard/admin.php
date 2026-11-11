@@ -21,7 +21,7 @@ $asistenciaTotal = ['a_tiempo' => 182, 'retardos' => 23];
 
 //CALCULOS
 $totalHoy        = count($llegaronHoy);
-$retardosHoy     = count(array_filter($llegaronHoy, fn($u) => $u['retardo']));
+$retardosHoy     = count(array_filter($llegaronHoy, fn ($u) => $u['retardo']));
 $aTiempoHoy      = $totalHoy - $retardosHoy;
 $pctATiempoHoy   = $totalHoy ? round($aTiempoHoy / $totalHoy * 100) : 0;
 $pctRetardosHoy  = $totalHoy ? round($retardosHoy / $totalHoy * 100) : 0;
@@ -46,9 +46,9 @@ $totalAsistencia = $asistenciaTotal['a_tiempo'] + $asistenciaTotal['retardos'];
 
     <!-- Incluir Sidebar y Header -->
       <?php
-      include('../sidebar.php');
-      include('../header.php')
-      ?>
+      include('../complementos/sidebar.php');
+include('../complementos/header.php')
+?>
 
       <!-- MAIN (El cuadro azul muy claro para el contenido principal) -->
       <main class="app-main-container">

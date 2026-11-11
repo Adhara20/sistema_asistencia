@@ -14,8 +14,8 @@
     <div class="app-layout">
 
       <?php
-      include('sidebar.php');
-      include('header.php')
+      include('../complementos/sidebar.php');
+      include('../complementos/header.php')
       ?>
 
       <main class="app-main-container">
@@ -168,8 +168,5 @@
     </div>
 
 </body>
-
-<script src="../../resources/js/sidebar.js"></script>
 <script src="../../resources/js/lista_usuarios.js"></script>
-
 </html>

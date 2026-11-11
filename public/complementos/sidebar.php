@@ -33,6 +33,6 @@
         </a>
     </div>
 </aside>
-<script src="../resources/js/sidebar.js"></script>
+<script src="..\..\resources\js\sidebar.js"></script>
 
 

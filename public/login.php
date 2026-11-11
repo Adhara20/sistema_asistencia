@@ -9,6 +9,7 @@
 <body>
 
     <div class="min-h-screen flex items-center justify-center p-4">
+     
         <div id="card-empleados" class="bg-[var(--color-background)] rounded-2xl shadow-xl w-full max-w-sm p-12 text-center border border-[var(--color-card-bg)]">
 
             <h1 class="text-[length:var(--text-header-title)] font-bold text-[var(--color-primary)] mb-1">Iniciar Sesión</h1>

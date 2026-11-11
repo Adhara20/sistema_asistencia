@@ -15,8 +15,8 @@
 
         <!-- Incluir Sidebar y Header -->
         <?php
-        include('../sidebar.php');
-        include('../header.php')
+        include('../complementos/sidebar.php');
+        include('../complementos/header.php')
         ?>
 
         <!-- MAIN (El cuadro azul muy claro para el contenido principal) -->
@@ -27,8 +27,8 @@
 
                 <!-- **LO UNICO QUE SE VA A CAMBIAR ES DE AQUÍ: **-->
                 
-                <h2 class="text-title font-bold text-primary text-center mb-1">Editar Usuario</h2>
-                <p class="text-description text-gris text-center mb-6">Formulario de Editar Usuarios</p>
+                <h2 class="text-title font-bold text-primary text-center mb-1">Registrar Usuario</h2>
+                <p class="text-description text-gris text-center mb-6">Formulario de Registro de Usuarios</p>
                 
                 <div class="space-y-6">
                     <!-- Bloque 1 -->
@@ -78,7 +78,7 @@
                         </button>
                         
                         <button type="submit" class="px-6 py-2.5 text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all cursor-pointer">
-                            Editar
+                            Registrar
                         </button>
                     </div>
                 </div>
@@ -91,4 +91,5 @@
     </div>
 
 </body>
+<script src="../../resources/js/sidebar.js"></script>
 </html>

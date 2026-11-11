@@ -17,8 +17,8 @@
 
     <!-- Incluir Sidebar y Header -->
       <?php
-      include('sidebar.php');
-      include('header.php');
+      include('../complementos/sidebar.php');
+      include('../complementos/header.php');
       ?>
 
       <!-- MAIN (El cuadro azul muy claro para el contenido principal) -->
