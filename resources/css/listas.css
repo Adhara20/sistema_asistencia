@@ -354,8 +354,23 @@
   white-space: nowrap;
 }
 
+.dato-mensaje {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mensaje-aviso {
+  background-color: var(--color-inactive-bg);
+  color: var(--color-inactive);
+}
+
+.mensaje-advertencia {
+  background-color: var(--color-advertencia-bg);
+  color: var(--color-advertencia);
+}
+
 .columna-acciones {
-  text-align: right;
+  text-align: center;
 }
 
 .celda-acciones {
@@ -464,7 +479,7 @@
     flex-direction: column;
   }
 
-  .usuarios-categorias {
+  .lista-categorias {
     max-width: 100%;
     overflow-x: auto;
   }
@@ -486,12 +501,12 @@
     font-size: 1.35rem;
   }
 
-  .usuarios-categorias {
+  .lista-categorias {
     width: 100%;
     box-sizing: border-box;
   }
 
-  .categoria-usuario {
+  .categoria-lista {
     flex: 0 0 auto;
     padding: 0.55rem 0.65rem;
     font-size: 0.8rem;
@@ -530,7 +545,7 @@
 
 /* PESTAÑAS */
 
-.usuarios-categorias {
+.lista-categorias {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -539,7 +554,7 @@
   border-radius: 0.75rem;
 }
 
-.categoria-usuario {
+.categoria-lista {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -560,12 +575,12 @@
     box-shadow 0.2s;
 }
 
-.categoria-usuario:hover {
+.categoria-lista:hover {
   color: var(--color-secondary);
   background-color: var(--color-background);
 }
 
-.categoria-usuario.categoria-activa {
+.categoria-lista.categoria-activa {
   background-color: var(--color-background);
   color: var(--color-primary);
   font-weight: 600;
