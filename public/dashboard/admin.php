@@ -134,7 +134,6 @@ include('../complementos/header.php')
                                             <p class="item-nombre"><?= htmlspecialchars($u['nombre']) ?></p>
                                             <p class="item-detalle"><?= htmlspecialchars($u['detalle']) ?></p>
                                         </div>
-                                        <button type="button" class="boton-notificar">Notificar riesgo</button>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
@@ -156,7 +155,7 @@ include('../complementos/header.php')
                                             <p class="item-nombre"><?= htmlspecialchars($u['nombre']) ?></p>
                                             <p class="item-detalle"><?= htmlspecialchars($u['detalle']) ?></p>
                                         </div>
-                                        <button type="button" class="boton-notificar">Notificar: acudir a RH</button>
+                                        <button type="button" class="boton-notificar">Marcar Resuelto</button>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>

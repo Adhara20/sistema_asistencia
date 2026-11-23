@@ -42,19 +42,19 @@
                         </div>
 
                         <!-- 2.QUITAR EL NAV, SUS LISTAS NO LAS OCUPARÁN -->
-                        <nav class="usuarios-categorias" aria-label="Tipo de usuario">
+                        <nav class="lista-categorias" aria-label="Tipo de usuario">
                             <button type="button"
-                                    class="categoria-usuario categoria-activa" data-tabla="tabla-empleados">
+                                    class="categoria-lista categoria-activa" data-tabla="tabla-empleados">
                                 Empleados
                                 <span class="categoria-contador">42</span>
                             </button>
 
-                            <button type="button" class="categoria-usuario" data-tabla="tabla-admins">
+                            <button type="button" class="categoria-lista" data-tabla="tabla-admins">
                                 Administradores
                                 <span class="categoria-contador">5</span>
                             </button>
 
-                            <button type="button" class="categoria-usuario" data-tabla="tabla-registradoras">
+                            <button type="button" class="categoria-lista" data-tabla="tabla-registradoras">
                                 Registradoras
                                 <span class="categoria-contador">3</span>
                             </button>
