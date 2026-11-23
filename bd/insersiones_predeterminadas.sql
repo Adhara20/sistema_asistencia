@@ -1,0 +1,15 @@
+INSERT INTO departamentos (departamento) VALUES("Recursos Humanos");
+INSERT INTO departamentos (departamento) VALUES("Administración");
+INSERT INTO departamentos (departamento) VALUES("Finanzas");
+INSERT INTO departamentos (departamento) VALUES("Contabilidad");
+INSERT INTO departamentos (departamento) VALUES("Ventas");
+INSERT INTO departamentos (departamento) VALUES("Marketing");
+INSERT INTO departamentos (departamento) VALUES("Sistemas");
+INSERT INTO departamentos (departamento) VALUES("Producción");
+INSERT INTO departamentos (departamento) VALUES("Logística");
+INSERT INTO departamentos (departamento) VALUES("Compras");
+INSERT INTO departamentos (departamento) VALUES("Atención al Cliente");
+INSERT INTO departamentos (departamento) VALUES("Mantenimiento");
+INSERT INTO departamentos (departamento) VALUES("Calidad");
+INSERT INTO departamentos (departamento) VALUES("Seguridad e Higiene");
+INSERT INTO departamentos (departamento) VALUES("Almacén");
