@@ -29,18 +29,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `codigo_usuario` VARCHAR(10) NOT NULL,
+  `codigo_usuario` UNIQUE VARCHAR(10) NOT NULL,
   `nombres` VARCHAR(80) NOT NULL,
   `apellidos` VARCHAR(80) NULL,
   `puesto` VARCHAR(30) NULL,
   `fk_departamento` INT NULL,
-  `correo_electornico` VARCHAR(100) NULL,
+  `correo_electronico` UNIQUE VARCHAR(100) NULL,
   `password` TEXT NOT NULL,
   `rol` ENUM('Empleado', 'Administrador', 'Registradora') NOT NULL,
   `estatus` ENUM('Activo', 'Baja')  DEFAULT 'Activo' NOT NULL,
   PRIMARY KEY (`id_usuario`),
   FOREIGN KEY `fk_departamento` REFERENCES `departamentos` (`id_departamento`)
-  ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = InnoDB
 COMMENT = 'Como también se usará para los usuarios de Registradoras, se dejarón varios campos nulleables: apellidos, puesto, departamento y correo_electronico.';
@@ -52,13 +51,15 @@ COMMENT = 'Como también se usará para los usuarios de Registradoras, se dejar�
 CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`asistencia` (
   `id_asistencia` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
+  `fk_semestre`INT NOT NULL,
   `fk_usuario` INT NOT NULL,
   `entrada` TIME NOT NULL,
   `salida` TIME NULL,
   `estatus_entrada` ENUM('A tiempo', 'Retraso' ) NOT NULL,
   `estatus_salida` ENUM('Horas Completas', 'Horas Incompletas', 'Tiempo Extra') NULL,
   PRIMARY KEY (`id_asistencia`),
-  FOREIGN KEY `fk_usuario` REFERENCES `usuarios` (`id_usuario`)
+  FOREIGN KEY `fk_usuario` REFERENCES `usuarios` (`id_usuario`),
+  FOREIGN KEY `fk_semestre` REFERENCES `semestres` (`id_semestre`),
   ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
@@ -131,6 +132,25 @@ CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`logs` (
   ON DELETE CASCADE ON UPDATE CASCADE
   )
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sistema_asistencia`.`recuperaciones_contrasena`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS recuperaciones_contrasena (
+    id_recuperacion INT NOT NULL AUTO_INCREMENT,
+    fk_usuario INT NOT NULL,
+    token_hash CHAR(64) NOT NULL,
+    expira_en DATETIME NOT NULL,
+    utilizado_en DATETIME NULL,
+    PRIMARY KEY (id_recuperacion),
+    UNIQUE KEY uq_token_hash (token_hash),
+    FOREIGN KEY (fk_usuario)
+        REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
