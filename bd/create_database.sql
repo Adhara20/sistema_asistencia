@@ -46,6 +46,23 @@ COMMENT = 'Como también se usará para los usuarios de Registradoras, se dejar�
 
 
 -- -----------------------------------------------------
+-- Table `sistema_asistencia`.`semestres`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`semestres` (
+  `id_semestre` INT NOT NULL AUTO_INCREMENT,
+  `semestre` VARCHAR(10) NOT NULL,
+  `cierre` DATE NOT NULL,
+  `inicio` DATE NOT NULL,
+  `cerrado_por` INT NOT NULL,
+  `estatus` ENUM('Cerrado', 'En curso') DEFAULT 'En curso' NOT NULL,
+  PRIMARY KEY (`id_semestre`),
+  FOREIGN KEY `cerrado_por` REFERENCES `usuarios` (`id_usuario`)
+  ON DELETE CASCADE ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `sistema_asistencia`.`asistencia`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`asistencia` (
@@ -66,23 +83,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sistema_asistencia`.`semestres`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`semestres` (
-  `id_semestre` INT NOT NULL AUTO_INCREMENT,
-  `semestre` VARCHAR(10) NOT NULL,
-  `cierre` DATE NOT NULL,
-  `inicio` DATE NOT NULL,
-  `cerrado_por` INT NOT NULL,
-  `estatus` ENUM('Cerrado', 'En curso') DEFAULT 'En curso' NOT NULL,
-  PRIMARY KEY (`id_semestre`),
-  FOREIGN KEY `cerrado_por` REFERENCES `usuarios` (`id_usuario`)
-  ON DELETE CASCADE ON UPDATE CASCADE
-)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `sistema_asistencia`.`horario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`horario` (
@@ -90,8 +90,8 @@ CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`horario` (
   `hora_entrada` TIME NOT NULL,
   `hora_salida` TIME NOT NULL,
   `fk_semestre` INT NOT NULL,
-  `estatus` ENUM('Actual', 'Anterior') ENUM 'Actual' NOT NULL,
-  PRIMARY KEY (`id_horario`),
+  `estatus` ENUM('Actual', 'Anterior') DEFAULT 'Actual' NOT NULL,
+  PRIMARY KEY (`id_horario`)
   FOREIGN KEY `fk_semestre` REFERENCES `semestres` (`id_semestre`)
   ON DELETE CASCADE ON UPDATE CASCADE
   )
