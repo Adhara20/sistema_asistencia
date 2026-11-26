@@ -7,10 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema sistema_asistencia
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema sistema_asistencia
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `sistema_asistencia` DEFAULT CHARACTER SET utf8 ;
 USE `sistema_asistencia` ;
 
@@ -29,17 +25,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `codigo_usuario` UNIQUE VARCHAR(10) NOT NULL,
+  `codigo_usuario` VARCHAR(10) UNIQUE NOT NULL,
   `nombres` VARCHAR(80) NOT NULL,
   `apellidos` VARCHAR(80) NULL,
   `puesto` VARCHAR(30) NULL,
   `fk_departamento` INT NULL,
-  `correo_electronico` UNIQUE VARCHAR(100) NULL,
+  `correo_electronico` VARCHAR(100) UNIQUE NULL,
   `password` TEXT NOT NULL,
   `rol` ENUM('Empleado', 'Administrador', 'Registradora') NOT NULL,
-  `estatus` ENUM('Activo', 'Baja')  DEFAULT 'Activo' NOT NULL,
+  `estatus` ENUM('Activo', 'Baja') DEFAULT 'Activo' NOT NULL,
   PRIMARY KEY (`id_usuario`),
-  FOREIGN KEY `fk_departamento` REFERENCES `departamentos` (`id_departamento`)
+  FOREIGN KEY (`fk_departamento`) REFERENCES `departamentos` (`id_departamento`)
 )
 ENGINE = InnoDB
 COMMENT = 'Como también se usará para los usuarios de Registradoras, se dejarón varios campos nulleables: apellidos, puesto, departamento y correo_electronico.';
@@ -56,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`semestres` (
   `cerrado_por` INT NOT NULL,
   `estatus` ENUM('Cerrado', 'En curso') DEFAULT 'En curso' NOT NULL,
   PRIMARY KEY (`id_semestre`),
-  FOREIGN KEY `cerrado_por` REFERENCES `usuarios` (`id_usuario`)
+  FOREIGN KEY (`cerrado_por`) REFERENCES `usuarios` (`id_usuario`)
   ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
@@ -68,16 +64,15 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`asistencia` (
   `id_asistencia` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
-  `fk_semestre`INT NOT NULL,
+  `fk_semestre` INT NOT NULL,
   `fk_usuario` INT NOT NULL,
   `entrada` TIME NOT NULL,
   `salida` TIME NULL,
-  `estatus_entrada` ENUM('A tiempo', 'Retraso' ) NOT NULL,
+  `estatus_entrada` ENUM('A tiempo', 'Retraso') NOT NULL,
   `estatus_salida` ENUM('Horas Completas', 'Horas Incompletas', 'Tiempo Extra') NULL,
   PRIMARY KEY (`id_asistencia`),
-  FOREIGN KEY `fk_usuario` REFERENCES `usuarios` (`id_usuario`),
-  FOREIGN KEY `fk_semestre` REFERENCES `semestres` (`id_semestre`),
-  ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (`fk_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`fk_semestre`) REFERENCES `semestres` (`id_semestre`) ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -91,10 +86,10 @@ CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`horario` (
   `hora_salida` TIME NOT NULL,
   `fk_semestre` INT NOT NULL,
   `estatus` ENUM('Actual', 'Anterior') DEFAULT 'Actual' NOT NULL,
-  PRIMARY KEY (`id_horario`)
-  FOREIGN KEY `fk_semestre` REFERENCES `semestres` (`id_semestre`)
+  PRIMARY KEY (`id_horario`),
+  FOREIGN KEY (`fk_semestre`) REFERENCES `semestres` (`id_semestre`)
   ON DELETE CASCADE ON UPDATE CASCADE
-  )
+)
 ENGINE = InnoDB
 COMMENT = 'Por si ajustan el horario más de una vez en un mismo Semestre, el estatus evitará que otros registros de asistencia sean afectados.';
 
@@ -110,47 +105,46 @@ CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`notificaciones` (
   `fk_empleado` INT NOT NULL,
   `atendido_por` INT NULL,
   PRIMARY KEY (`id_notificacion`),
-  FOREIGN KEY `fk_empleado` REFERENCES `usuarios` (`id_usuario`)
+  FOREIGN KEY (`fk_empleado`) REFERENCES `usuarios` (`id_usuario`)
   ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY `atendido_por` REFERENCES `usuarios` (`id_usuario`)
+  FOREIGN KEY (`atendido_por`) REFERENCES `usuarios` (`id_usuario`)
   ON DELETE CASCADE ON UPDATE CASCADE
-  )
+)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mysistema_asistenciadb`.`logs`
+-- Table `sistema_asistencia`.`logs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`logs` (
   `id_log` INT NOT NULL AUTO_INCREMENT,
   `mensaje` TEXT NOT NULL,
   `fk_usuario` INT NOT NULL,
-  `fecha` DATE NOT NULL,,
+  `fecha` DATE NOT NULL,
   `hora` TIME NOT NULL,
   PRIMARY KEY (`id_log`),
-  FOREIGN KEY `fk_usuario` REFERENCES `usuarios` (`id_usuario`)
+  FOREIGN KEY (`fk_usuario`) REFERENCES `usuarios` (`id_usuario`)
   ON DELETE CASCADE ON UPDATE CASCADE
-  )
+)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `sistema_asistencia`.`recuperaciones_contrasena`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS recuperaciones_contrasena (
-    id_recuperacion INT NOT NULL AUTO_INCREMENT,
-    fk_usuario INT NOT NULL,
-    token_hash CHAR(64) NOT NULL,
-    expira_en DATETIME NOT NULL,
-    utilizado_en DATETIME NULL,
-    PRIMARY KEY (id_recuperacion),
-    UNIQUE KEY uq_token_hash (token_hash),
-    FOREIGN KEY (fk_usuario)
-        REFERENCES usuarios(id_usuario)
+CREATE TABLE IF NOT EXISTS `sistema_asistencia`.`recuperaciones_contrasena` (
+    `id_recuperacion` INT NOT NULL AUTO_INCREMENT,
+    `fk_usuario` INT NOT NULL,
+    `token_hash` CHAR(64) NOT NULL,
+    `expira_en` DATETIME NOT NULL,
+    `utilizado_en` DATETIME NULL,
+    PRIMARY KEY (`id_recuperacion`),
+    UNIQUE KEY `uq_token_hash` (`token_hash`),
+    FOREIGN KEY (`fk_usuario`)
+        REFERENCES `usuarios` (`id_usuario`)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 ) ENGINE = InnoDB;
-
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
