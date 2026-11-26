@@ -311,7 +311,8 @@ DELIMITER;
 -- Busca y devuelve el ID interno del usuario que coincide con el código proporcionado.
 DELIMITER $$
 CREATE PROCEDURE obtener_id_por_codigo_usuario(
-    IN u_codigo VARCHAR(10)
+    IN u_codigo VARCHAR(10),
+    OUT u_id_usuario INT
 )
 BEGIN
     SELECT id_usuario
