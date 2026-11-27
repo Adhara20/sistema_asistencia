@@ -1,0 +1,1 @@
+ALTER TABLE usuarios ADD COLUMN token_usuario VARCHAR(255) UNIQUE;
